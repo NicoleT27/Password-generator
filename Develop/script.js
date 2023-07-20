@@ -132,10 +132,56 @@ function userAnswers() {
     return null;
   }
 
- 
+  var userChoices = {
+    length: length,
+    uppercase: uppercase,
+    lowercase: lowercase,
+    number: number,
+    special: special,
+  };
+  return userChoices;
 }
 
+function generatePassword() {
+  var userInfo = userAnswers();
+  return userInfo;
+}
+function random() {
+  var password = "";
+  for (var i = 0; i < userInfo.length; i++) {
+    var possibilities = [
+      "uppercaseChar",
+      "lowercaseChar",
+      "numberChar",
+      "specialChar",
+    ];
+    if ((userInfo.uppercaseChar = true)) {
+      var randomUpper =
+        possibilities[Math.floor(math.random() * possibilities.length)];
+      possibilities.push(randomUpper);
+    }
+    if ((userInfo.lowercaseChar = true)) {
+      var randomLower =
+        possibilities[Math.floor(math.random() * possibilities.length)];
+      possibilities.push(RandomLower);
+    }
+    if ((userInfo.numberChar = true)) {
+      var randomNum =
+        possibilities[Math.floor(math.random() * possibilities.length)];
+      possibilities.push(numberChar);
+    }
+    if ((userInfo.specialChar = true)) {
+      var randomSpecial =
+        possibilities[Math.floor(math.random() * possibilities.length)];
+      possibilities.push(specialChar);
+    }
 
+    var addToPass = possibilities[random];
+    password += addToPass;
+  }
+
+  return password;
+}
 
 function writePassword() {
   generatePassword();
