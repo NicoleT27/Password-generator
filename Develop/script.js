@@ -1,11 +1,4 @@
-// prompt the user to ask for the length between 8-128
-// prompt which character types such as lowercase, uppercase, numeric, and spcial characters indivisually , seperate prompts
-// atleast one chracter type should be selected doesnt have to be all
-// then new password is generated
-
 var generateBtn = document.querySelector("#generate");
-
-// defines generate password function and provides message for no response
 
 // state which characters the user has a choice between globally as an array
 var uppercaseChar = [
@@ -121,7 +114,7 @@ function userAnswers() {
   var specialChoice = confirm(
     "Do you want special characters? Click Ok for YES and Cancel for NO"
   );
-
+  // Add a result for scenario of user not picking any chracters
   if (
     uppercaseChoice === false &&
     lowercaseChoice === false &&
@@ -131,7 +124,7 @@ function userAnswers() {
     alert("Please choose atleast one character type");
     return null;
   }
-  console.log(numberChoice);
+
   var userChoices = {
     length: length,
     uppercase: uppercaseChoice,
@@ -141,12 +134,13 @@ function userAnswers() {
   };
   return userChoices;
 }
+// store answers from user (userAnswers) and place into a new function to be able to use later
 var userInfo;
 function generatePassword() {
   userInfo = userAnswers();
   return userInfo;
 }
-
+// provide for loops for diffrent scenarios using triple === to have system reflect result in password
 function random() {
   var password = "";
   var possibilities = "";
@@ -170,7 +164,7 @@ function random() {
       possibilities += specialChar[i];
     }
   }
-  console.log(possibilities);
+  // create a for loop to be able to pass info to and generate the password with the specifics chosen
   for (var i = 0; i < userInfo.length; i++) {
     var random = Math.floor(Math.random() * possibilities.length);
     var addToPass = possibilities[random];
