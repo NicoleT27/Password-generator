@@ -109,77 +109,73 @@ function userAnswers() {
   }
 
   // confirm which characters user wants to use
-  var uppercase = confirm(
+  var uppercaseChoice = confirm(
     "Do you want uppercase characters? Click Ok for YES and Cancel for NO"
   );
-  var lowercase = confirm(
+  var lowercaseChoice = confirm(
     "Do you want lowercase characters? Click Ok for YES and Cancel for NO"
   );
-  var number = confirm(
+  var numberChoice = confirm(
     "Do you want numeric characters? Click Ok for YES and Cancel for NO"
   );
-  var special = confirm(
+  var specialChoice = confirm(
     "Do you want special characters? Click Ok for YES and Cancel for NO"
   );
 
   if (
-    uppercase === false &&
-    lowercase === false &&
-    number === false &&
-    special === false
+    uppercaseChoice === false &&
+    lowercaseChoice === false &&
+    numberChoice === false &&
+    specialChoice === false
   ) {
     alert("Please choose atleast one character type");
     return null;
   }
-
+  console.log(numberChoice);
   var userChoices = {
     length: length,
-    uppercase: uppercase,
-    lowercase: lowercase,
-    number: number,
-    special: special,
+    uppercase: uppercaseChoice,
+    lowercase: lowercaseChoice,
+    number: numberChoice,
+    special: specialChoice,
   };
   return userChoices;
 }
-
+var userInfo;
 function generatePassword() {
-  var userInfo = userAnswers();
+  userInfo = userAnswers();
   return userInfo;
 }
+
 function random() {
   var password = "";
+  var possibilities = "";
+  if (userInfo.uppercase === true) {
+    for (var i = 0; i < uppercaseChar.length; i++) {
+      possibilities += uppercaseChar[i];
+    }
+  }
+  if (userInfo.lowercase === true) {
+    for (var i = 0; i < lowercaseChar.length; i++) {
+      possibilities += lowercaseChar[i];
+    }
+  }
+  if (userInfo.number === true) {
+    for (var i = 0; i < numberChar.length; i++) {
+      possibilities += numberChar[i];
+    }
+  }
+  if (userInfo.special === true) {
+    for (var i = 0; i < specialChar.length; i++) {
+      possibilities += specialChar[i];
+    }
+  }
+  console.log(possibilities);
   for (var i = 0; i < userInfo.length; i++) {
-    var possibilities = [
-      "uppercaseChar",
-      "lowercaseChar",
-      "numberChar",
-      "specialChar",
-    ];
-    if ((userInfo.uppercaseChar = true)) {
-      var randomUpper =
-        possibilities[Math.floor(math.random() * possibilities.length)];
-      possibilities.push(randomUpper);
-    }
-    if ((userInfo.lowercaseChar = true)) {
-      var randomLower =
-        possibilities[Math.floor(math.random() * possibilities.length)];
-      possibilities.push(RandomLower);
-    }
-    if ((userInfo.numberChar = true)) {
-      var randomNum =
-        possibilities[Math.floor(math.random() * possibilities.length)];
-      possibilities.push(numberChar);
-    }
-    if ((userInfo.specialChar = true)) {
-      var randomSpecial =
-        possibilities[Math.floor(math.random() * possibilities.length)];
-      possibilities.push(specialChar);
-    }
-
+    var random = Math.floor(Math.random() * possibilities.length);
     var addToPass = possibilities[random];
     password += addToPass;
   }
-
   return password;
 }
 
@@ -191,20 +187,3 @@ function writePassword() {
 }
 
 generateBtn.addEventListener("click", writePassword);
-
-// for( i = 0 i<userInfo.length i++)
-// {
-//   var tempArray = [];
-//   if userInfo.upper= true{
-//     random pick upper
-//     tempArray.push(randomUpper);
-//   }
-//   if lowercaseChar
-//   if number
-//   if special
-
-//   var random = Math.floor(Math.random() * tempArray.length);
-//   var addToPass = tempArray[random]
-
-//   password += addToPass
-// }
