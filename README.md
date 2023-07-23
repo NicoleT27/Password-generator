@@ -34,4 +34,4 @@ Once all of the questions have been answered the application will then provide a
 Th following is credit towards UCF for providing the starter code for the overall look of the page.
 
 Link to application:
-<a href=" https://nicolet27.github.io/Password-generator/">Github Pages</a>
+<a href="https://nicolet27.github.io/Password-generator/">Github Pages</a>
